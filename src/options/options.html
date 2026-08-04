@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EzApply — My Details</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="../../icons/icon48.png" alt="" width="26" height="26">
+      <div>
+        <h1>EzApply</h1>
+        <p>Fill it in once. Every Google Form after this is one click.</p>
+      </div>
+    </div>
+    <div class="save-state" id="saveState" aria-live="polite"></div>
+  </header>
+
+  <div class="layout">
+    <nav class="side" id="nav" aria-label="Sections"></nav>
+
+    <main class="content">
+      <!-- Profile sections are generated from the same field registry that drives
+           matching, so a new built-in field shows up here automatically. -->
+      <div id="profileSections"></div>
+
+      <section class="card" id="section-projects">
+        <h2>Projects</h2>
+        <p class="hint">Used to answer "describe your projects" style questions. They are
+          formatted into a readable block automatically.</p>
+        <div id="projectList"></div>
+        <button class="btn ghost" id="addProject" type="button">+ Add project</button>
+      </section>
+
+      <section class="card" id="section-myfields">
+        <h2>My Fields</h2>
+        <p class="hint">Anything the built-in fields do not cover — LeetCode link, hostel
+          name, blood group, a company-specific question. Once added, EzApply matches and
+          fills it on every future form, just like a built-in field.</p>
+        <div id="customList"></div>
+        <button class="btn ghost" id="addCustom" type="button">+ Add field</button>
+      </section>
+
+      <section class="card" id="section-learned">
+        <h2>What EzApply has learned</h2>
+        <p class="hint">Every time you correct an answer, the question is remembered here.
+          Delete a row if EzApply learned something wrong.</p>
+        <div id="mappingList"></div>
+      </section>
+
+      <section class="card" id="section-settings">
+        <h2>Settings</h2>
+        <div class="setting">
+          <label for="autoThreshold">Confidence needed to fill without flagging</label>
+          <div class="row">
+            <input type="range" id="autoThreshold" min="0.5" max="1" step="0.05">
+            <output id="autoThresholdOut"></output>
+          </div>
+          <p class="hint">Lower fills more questions but flags fewer for review.</p>
+        </div>
+        <label class="check"><input type="checkbox" id="learnFromCorrections"> Learn from my corrections</label>
+        <label class="check"><input type="checkbox" id="highlightFilled"> Highlight filled questions on the page</label>
+        <label class="check"><input type="checkbox" id="showPanel"> Show the review panel after filling</label>
+        <label class="check"><input type="checkbox" id="autoFillNewSections"> Auto-fill new sections on multi-page forms</label>
+      </section>
+
+      <section class="card" id="section-backup">
+        <h2>Backup</h2>
+        <p class="hint">Your details are stored only on this computer, in this browser
+          profile. Export a copy before reinstalling Chrome or switching machines.</p>
+        <div class="row">
+          <button class="btn" id="exportBtn" type="button">Export JSON</button>
+          <button class="btn ghost" id="importBtn" type="button">Import JSON</button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+          <button class="btn danger" id="resetBtn" type="button">Erase everything</button>
+        </div>
+        <p class="hint" id="backupStatus"></p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="confirmDialog">
+    <form method="dialog">
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmBody"></p>
+      <div class="row end">
+        <button class="btn ghost" value="cancel" type="submit">Cancel</button>
+        <button class="btn danger" value="confirm" type="submit" id="confirmOk">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../common/normalize.js"></script>
+  <script src="../common/schema.js"></script>
+  <script src="../common/matcher.js"></script>
+  <script src="../common/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

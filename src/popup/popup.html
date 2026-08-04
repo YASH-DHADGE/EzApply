@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EzApply</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="head">
+    <div class="brand">
+      <img src="../../icons/icon32.png" alt="" width="22" height="22">
+      <span>EzApply</span>
+    </div>
+    <button id="openOptions" class="link" type="button">Edit my details</button>
+  </header>
+
+  <main>
+    <section class="meter" id="meterBox">
+      <div class="meter-top">
+        <span id="meterLabel">Loading your profile…</span>
+        <span id="meterPct" class="pct"></span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="meterFill"></div></div>
+    </section>
+
+    <button id="fillBtn" class="cta" type="button" disabled>
+      <span class="cta-main">EzApply</span>
+      <span class="cta-sub" id="ctaSub">Checking this page…</span>
+    </button>
+
+    <p class="status" id="status"></p>
+
+    <section class="last" id="lastRun" hidden>
+      <h2>Last run</h2>
+      <div class="chips">
+        <span class="chip c-filled"  id="lastFilled">0 filled</span>
+        <span class="chip c-review"  id="lastReview">0 to check</span>
+        <span class="chip c-skipped" id="lastSkipped">0 skipped</span>
+      </div>
+      <p class="muted" id="lastWhen"></p>
+    </section>
+
+    <p class="note">EzApply fills the form and stops. It never submits for you, and your
+      details never leave this device.</p>
+  </main>
+
+  <script src="../common/normalize.js"></script>
+  <script src="../common/schema.js"></script>
+  <script src="../common/matcher.js"></script>
+  <script src="../common/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

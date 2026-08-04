@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EzApply — One-Click Google Form Filler</title>
+<meta name="description" content="A Chrome extension that fills repetitive Google Forms in one click. All data stays on your device.">
+<link rel="icon" type="image/png" href="icons/icon32.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <img src="icons/icon32.png" alt="">
+      EzApply
+    </div>
+    <div>
+      <a class="link" href="#install">Install</a>
+      <a class="link" href="#how-it-works">How it works</a>
+      <a class="link" href="#privacy">Privacy</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <img class="logo" src="icons/icon128.png" alt="EzApply logo">
+    <h1>Fill repetitive Google Forms in one click</h1>
+    <p class="sub">
+      College placement drives ask the same questions over and over — name, mobile number,
+      email, roll number, CGPA, skills, links. EzApply stores that once, locally, and fills
+      any Google Form from the toolbar.
+    </p>
+    <a class="btn btn-primary" href="ezapply.zip" download>Download EzApply</a>
+    <a class="btn btn-secondary" href="#install">Install instructions</a>
+    <div class="version-note">Version 1.0.0 · Manifest V3 · Works in Chrome and other Chromium browsers</div>
+    <div class="badges">
+      <span class="badge">No account required</span>
+      <span class="badge">No server</span>
+      <span class="badge">No network requests</span>
+      <span class="badge">Never auto-submits</span>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>One-click fill</h3>
+        <p>Open any Google Form and click the EzApply toolbar icon. Your saved details are matched to the form's questions and filled in automatically.</p>
+      </div>
+      <div class="feature">
+        <h3>It learns as you go</h3>
+        <p>Correct an answer and EzApply remembers. Any question it doesn't recognise can become a permanent field of your own with two clicks.</p>
+      </div>
+      <div class="feature">
+        <h3>You stay in control</h3>
+        <p>Every fill is reviewed before you submit. EzApply never submits a form for you — you always send the final click.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Review panel</h2>
+    <table>
+      <thead>
+        <tr><th>Colour</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="dot dot-green"></span>Green</td><td>Filled with high confidence</td></tr>
+        <tr><td><span class="dot dot-amber"></span>Amber</td><td>Filled, but check it — the match was uncertain</td></tr>
+        <tr><td><span class="dot dot-grey"></span>Grey (dashed)</td><td>Skipped; the panel says why</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>Install</h2>
+    <ol class="steps">
+      <li>Download the extension using the button above, then unzip the folder.</li>
+      <li>Open <code>chrome://extensions</code> in your browser.</li>
+      <li>Turn on <strong>Developer mode</strong> (top right of the page).</li>
+      <li>Click <strong>Load unpacked</strong> and select the unzipped folder.</li>
+      <li>The options page opens automatically — fill in your details.</li>
+      <li>Open any Google Form and click the EzApply toolbar icon.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <h2>Privacy</h2>
+    <div class="callout">
+      <strong>Your data never leaves your device.</strong>
+      EzApply stores your details in <code>chrome.storage.local</code>, in your browser
+      profile on your computer only. There is no server, no account, and no network request
+      of any kind in the codebase. Back up your details any time from the options page under
+      <strong>Backup → Export JSON</strong>.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    EzApply · MIT License
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

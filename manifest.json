@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "EzApply — One-Click Google Form Filler",
+  "version": "1.0.0",
+  "description": "Fill repetitive placement and application Google Forms in a single click. All data stays on your device.",
+
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://docs.google.com/forms/*"],
+
+  "action": {
+    "default_title": "EzApply",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "options_page": "src/options/options.html",
+
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://docs.google.com/forms/*"],
+      "run_at": "document_idle",
+      "js": [
+        "src/common/normalize.js",
+        "src/common/schema.js",
+        "src/common/matcher.js",
+        "src/common/storage.js",
+        "src/content/gforms-selectors.js",
+        "src/content/gforms-parser.js",
+        "src/content/gforms-filler.js",
+        "src/content/panel.js",
+        "src/content/learner.js",
+        "src/content/content.js"
+      ],
+      "css": ["src/content/content.css"]
+    }
+  ]
+}

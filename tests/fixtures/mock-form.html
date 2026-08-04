@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EzApply — mock Google Form</title>
+  <link rel="stylesheet" href="../../src/content/content.css">
+  <style>
+    body { font: 14px/1.5 system-ui, sans-serif; margin: 0; padding: 24px; background: #f0ebf8; }
+    .form { max-width: 640px; margin: 0 auto; }
+    div[role="listitem"] { background: #fff; border: 1px solid #dadce0; border-radius: 8px; padding: 18px; margin-bottom: 12px; }
+    [role="heading"] { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+    .gubaDc { font-size: 12px; color: #5f6368; margin-bottom: 10px; }
+    input[type="text"], input[type="date"], textarea { width: 100%; box-sizing: border-box; padding: 7px; border: 0; border-bottom: 1px solid #dadce0; font: inherit; }
+    textarea { min-height: 60px; border: 1px solid #dadce0; border-radius: 4px; }
+    [role="radio"], [role="checkbox"] { display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; }
+    [role="radio"]::before, [role="checkbox"]::before { content: ""; width: 16px; height: 16px; border: 2px solid #5f6368; flex: 0 0 auto; }
+    [role="radio"]::before { border-radius: 50%; }
+    [role="radio"][aria-checked="true"]::before, [role="checkbox"][aria-checked="true"]::before { background: #673ab7; border-color: #673ab7; }
+    [role="listbox"] { border: 1px solid #dadce0; border-radius: 4px; padding: 8px; cursor: pointer; }
+    [role="option"] { padding: 6px 4px; }
+    [role="option"][hidden] { display: none; }
+    .bar { max-width: 640px; margin: 0 auto 16px; display: flex; gap: 8px; align-items: center; }
+    .bar button { padding: 8px 16px; border: 0; border-radius: 6px; background: #4f46e5; color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+    #log { max-width: 640px; margin: 16px auto; font: 12px/1.5 ui-monospace, monospace; white-space: pre-wrap; background: #fff; padding: 12px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <!--
+    A stand-in for a real Google Form, mirroring the ARIA structure EzApply relies on:
+    role=listitem questions, role=heading titles, and div-based radio / checkbox / listbox
+    widgets. Lets the parser and filler be exercised without loading docs.google.com.
+    Open this file directly in a browser and click "Run EzApply".
+  -->
+  <div class="bar">
+    <button id="run" type="button">Run EzApply</button>
+    <span id="status"></span>
+  </div>
+
+  <div class="form" role="list">
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Full Name</span><span aria-label="Required question">*</span></div>
+      <div class="gubaDc">As printed on your marksheet</div>
+      <div><input type="text" jsname="YPqjbf" aria-labelledby="h1"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Mobile No.</span><span aria-label="Required question">*</span></div>
+      <div><input type="text" jsname="YPqjbf"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Email ID</span></div>
+      <div><input type="text" jsname="YPqjbf"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>University Roll No</span></div>
+      <div><input type="text" jsname="YPqjbf"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Date of Birth</span></div>
+      <div><input type="date"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Degree</span></div>
+      <div role="radiogroup" aria-label="Degree">
+        <div role="radio" data-value="B.Tech / B.E." aria-checked="false"><span>B.Tech / B.E.</span></div>
+        <div role="radio" data-value="M.Tech" aria-checked="false"><span>M.Tech</span></div>
+        <div role="radio" data-value="MBA" aria-checked="false"><span>MBA</span></div>
+      </div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Which technologies do you know?</span></div>
+      <div role="list">
+        <div role="listitem"><div role="checkbox" data-answer-value="Java" aria-checked="false"><span>Java</span></div></div>
+        <div role="listitem"><div role="checkbox" data-answer-value="Python" aria-checked="false"><span>Python</span></div></div>
+        <div role="listitem"><div role="checkbox" data-answer-value="Go" aria-checked="false"><span>Go</span></div></div>
+        <div role="listitem"><div role="checkbox" data-answer-value="React" aria-checked="false"><span>React</span></div></div>
+      </div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Year of Passing</span></div>
+      <!-- Options are added only on first click, exactly like the real dropdown. -->
+      <div role="listbox" aria-label="Year of Passing" data-lazy="1" tabindex="0">
+        <div role="option" data-value="" aria-selected="true">Choose</div>
+      </div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Describe your projects</span></div>
+      <div><textarea jsname="YPqjbf"></textarea></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Your LeetCode profile</span></div>
+      <div><input type="text" jsname="YPqjbf"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Hostel Room Number</span></div>
+      <div><input type="text" jsname="YPqjbf"></div>
+    </div>
+
+    <div role="listitem">
+      <div role="heading" aria-level="3"><span>Upload your resume</span><span aria-label="Required question">*</span></div>
+      <div role="button">Add file</div>
+    </div>
+  </div>
+
+  <pre id="log"></pre>
+
+  <script>
+    // ---- minimal stand-ins for the widget behaviour Google implements -------------
+    document.addEventListener('click', function (event) {
+      var radio = event.target.closest('[role="radio"]');
+      if (radio) {
+        radio.closest('[role="radiogroup"]').querySelectorAll('[role="radio"]')
+          .forEach(function (r) { r.setAttribute('aria-checked', 'false'); });
+        radio.setAttribute('aria-checked', 'true');
+        return;
+      }
+
+      var check = event.target.closest('[role="checkbox"]');
+      if (check) {
+        check.setAttribute('aria-checked', check.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+        return;
+      }
+
+      var option = event.target.closest('[role="option"]');
+      if (option) {
+        option.closest('[role="listbox"]').querySelectorAll('[role="option"]')
+          .forEach(function (o) { o.setAttribute('aria-selected', 'false'); o.hidden = o.getAttribute('data-value') !== option.getAttribute('data-value'); });
+        option.setAttribute('aria-selected', 'true');
+        option.hidden = false;
+        return;
+      }
+
+      var listbox = event.target.closest('[role="listbox"]');
+      if (listbox && listbox.dataset.lazy === '1') {
+        listbox.dataset.lazy = '0';
+        ['2024', '2025', '2026', '2027'].forEach(function (year) {
+          var node = document.createElement('div');
+          node.setAttribute('role', 'option');
+          node.setAttribute('data-value', year);
+          node.setAttribute('aria-selected', 'false');
+          node.textContent = year;
+          listbox.appendChild(node);
+        });
+      }
+    }, true);
+
+    // ---- chrome.storage stub, seeded with a realistic profile --------------------
+    var seeded = false;
+    var memory = {};
+    globalThis.chrome = {
+      runtime: {
+        lastError: null,
+        onMessage: { addListener: function () {} },
+        openOptionsPage: function () {}
+      },
+      storage: {
+        local: {
+          get: function (key, cb) { cb(memory); },
+          set: function (obj, cb) { Object.assign(memory, obj); if (cb) cb(); }
+        }
+      }
+    };
+  </script>
+
+  <script src="../../src/common/normalize.js"></script>
+  <script src="../../src/common/schema.js"></script>
+  <script src="../../src/common/matcher.js"></script>
+  <script src="../../src/common/storage.js"></script>
+  <script src="../../src/content/gforms-selectors.js"></script>
+  <script src="../../src/content/gforms-parser.js"></script>
+  <script src="../../src/content/gforms-filler.js"></script>
+  <script src="../../src/content/panel.js"></script>
+  <script src="../../src/content/learner.js"></script>
+  <script src="../../src/content/content.js"></script>
+
+  <script>
+    (function () {
+      var S = EzApply.Schema;
+      var profile = S.defaultProfile();
+      profile.personal.fullName = 'Yash Daoev';
+      profile.personal.phone = '+91 98765 43210';
+      profile.personal.email = 'yash@example.com';
+      profile.personal.dob = '2003-05-14';
+      profile.academic.rollNumber = '21CS1234';
+      profile.academic.degree = 'B.Tech';
+      profile.academic.graduationYear = '2026';
+      profile.professional.skills = ['Java', 'Python', 'React', 'SQL'];
+      profile.projects = [
+        { title: 'EzApply', techStack: 'JavaScript, Chrome MV3', description: 'One-click Google Form filler.', link: 'https://github.com/x/ezapply' }
+      ];
+      profile.custom = [S.makeCustomField({ label: 'LeetCode Profile Link', value: 'leetcode.com/u/yash', type: 'link' })];
+
+      memory.ezapply = { schemaVersion: 1, profile: profile, mappings: {}, settings: {} };
+
+      document.getElementById('run').addEventListener('click', function () {
+        EzApply.Content.run().then(function (summary) {
+          document.getElementById('status').textContent =
+            summary.filled + ' filled · ' + summary.review + ' to check · ' + summary.skipped + ' skipped';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

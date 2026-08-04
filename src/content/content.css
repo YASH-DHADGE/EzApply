@@ -1,0 +1,276 @@
+/*
+ * EzApply — in-page styles.
+ *
+ * Everything is prefixed `ez-` and most properties are !important, because this stylesheet
+ * is injected into a page whose own CSS is aggressive and obfuscated. The panel is fixed
+ * at a very high z-index so Google's sticky header and footer cannot cover it.
+ */
+
+/* --- question highlights ------------------------------------------------- */
+
+div[role="listitem"].ez-hl-filled {
+  outline: 2px solid #16a34a !important;
+  outline-offset: 4px !important;
+  border-radius: 8px !important;
+  transition: outline-color .2s ease !important;
+}
+
+div[role="listitem"].ez-hl-review {
+  outline: 2px solid #f59e0b !important;
+  outline-offset: 4px !important;
+  border-radius: 8px !important;
+}
+
+div[role="listitem"].ez-hl-skipped {
+  outline: 2px dashed #94a3b8 !important;
+  outline-offset: 4px !important;
+  border-radius: 8px !important;
+}
+
+div[role="listitem"].ez-hl-focus {
+  box-shadow: 0 0 0 6px rgba(79, 70, 229, .18) !important;
+}
+
+/* --- panel --------------------------------------------------------------- */
+
+.ez-panel {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  z-index: 2147483000 !important;
+  width: 360px !important;
+  max-width: calc(100vw - 32px) !important;
+  max-height: min(70vh, 620px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, .22) !important;
+  font: 400 13px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  overflow: hidden !important;
+}
+
+.ez-panel.ez-collapsed .ez-body,
+.ez-panel.ez-collapsed .ez-foot { display: none !important; }
+
+.ez-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 14px !important;
+  background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+  color: #fff !important;
+  flex: 0 0 auto !important;
+}
+
+.ez-head .ez-title {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  color: #fff !important;
+}
+
+.ez-head button {
+  all: unset !important;
+  cursor: pointer !important;
+  padding: 2px 7px !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  color: #fff !important;
+  opacity: .85 !important;
+}
+.ez-head button:hover { background: rgba(255, 255, 255, .18) !important; opacity: 1 !important; }
+
+.ez-counts {
+  display: flex !important;
+  gap: 6px !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  flex: 0 0 auto !important;
+}
+
+.ez-chip {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 3px 9px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+}
+.ez-chip.ez-c-filled  { background: #dcfce7 !important; color: #14532d !important; }
+.ez-chip.ez-c-review  { background: #fef3c7 !important; color: #78350f !important; }
+.ez-chip.ez-c-skipped { background: #e2e8f0 !important; color: #334155 !important; }
+
+.ez-body {
+  overflow-y: auto !important;
+  padding: 6px 0 !important;
+  flex: 1 1 auto !important;
+}
+
+.ez-group-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+  color: #64748b !important;
+  padding: 10px 14px 4px !important;
+  margin: 0 !important;
+}
+
+.ez-row {
+  display: block !important;
+  width: 100% !important;
+  padding: 7px 14px !important;
+  border-left: 3px solid transparent !important;
+  cursor: pointer !important;
+  background: none !important;
+  border-top: 0 !important; border-right: 0 !important; border-bottom: 0 !important;
+  text-align: left !important;
+  font: inherit !important;
+  color: inherit !important;
+}
+.ez-row:hover { background: #f8fafc !important; }
+.ez-row.ez-r-filled  { border-left-color: #16a34a !important; }
+.ez-row.ez-r-review  { border-left-color: #f59e0b !important; }
+.ez-row.ez-r-skipped { border-left-color: #cbd5e1 !important; }
+
+.ez-q {
+  font-weight: 600 !important;
+  font-size: 12.5px !important;
+  color: #0f172a !important;
+  display: block !important;
+  overflow-wrap: anywhere !important;
+}
+
+.ez-v {
+  font-size: 12px !important;
+  color: #475569 !important;
+  display: block !important;
+  overflow-wrap: anywhere !important;
+  margin-top: 1px !important;
+}
+.ez-v.ez-muted { color: #94a3b8 !important; font-style: italic !important; }
+
+.ez-add {
+  all: unset !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  margin-top: 5px !important;
+  padding: 3px 9px !important;
+  border-radius: 6px !important;
+  background: #eef2ff !important;
+  color: #4338ca !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+}
+.ez-add:hover { background: #e0e7ff !important; }
+
+/* --- inline add-field form ---------------------------------------------- */
+
+.ez-form {
+  margin: 6px 14px 10px !important;
+  padding: 10px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+}
+
+.ez-form label {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+  margin: 6px 0 3px !important;
+}
+.ez-form label:first-child { margin-top: 0 !important; }
+
+.ez-form input,
+.ez-form select,
+.ez-form textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 6px 8px !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 7px !important;
+  font: 400 12.5px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  color: #0f172a !important;
+  background: #fff !important;
+}
+.ez-form textarea { min-height: 56px !important; resize: vertical !important; }
+
+.ez-form-actions {
+  display: flex !important;
+  gap: 6px !important;
+  margin-top: 10px !important;
+}
+
+.ez-btn {
+  all: unset !important;
+  cursor: pointer !important;
+  padding: 6px 12px !important;
+  border-radius: 7px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+.ez-btn-primary { background: #4f46e5 !important; color: #fff !important; }
+.ez-btn-primary:hover { background: #4338ca !important; }
+.ez-btn-ghost { background: #e2e8f0 !important; color: #334155 !important; }
+.ez-btn-ghost:hover { background: #cbd5e1 !important; }
+
+.ez-hint {
+  font-size: 11px !important;
+  color: #64748b !important;
+  margin: 6px 0 0 !important;
+}
+.ez-hint.ez-warn { color: #b45309 !important; }
+
+.ez-foot {
+  padding: 10px 14px !important;
+  border-top: 1px solid #eef2f7 !important;
+  display: flex !important;
+  gap: 6px !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+}
+.ez-foot .ez-note {
+  font-size: 11px !important;
+  color: #64748b !important;
+  flex: 1 1 auto !important;
+}
+
+/* --- toast --------------------------------------------------------------- */
+
+.ez-toast {
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  z-index: 2147483001 !important;
+  max-width: 320px !important;
+  padding: 10px 14px !important;
+  border-radius: 10px !important;
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  font: 400 12.5px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .3) !important;
+}
+
+/* --- dark mode ----------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  .ez-panel { background: #0f172a !important; color: #e2e8f0 !important; border-color: #1e293b !important; }
+  .ez-counts, .ez-foot { border-color: #1e293b !important; }
+  .ez-row:hover { background: #1e293b !important; }
+  .ez-q { color: #f1f5f9 !important; }
+  .ez-v { color: #94a3b8 !important; }
+  .ez-form { background: #1e293b !important; border-color: #334155 !important; }
+  .ez-form input, .ez-form select, .ez-form textarea {
+    background: #0f172a !important; color: #e2e8f0 !important; border-color: #334155 !important;
+  }
+  .ez-btn-ghost { background: #334155 !important; color: #e2e8f0 !important; }
+  .ez-add { background: #312e81 !important; color: #c7d2fe !important; }
+  .ez-chip.ez-c-skipped { background: #334155 !important; color: #cbd5e1 !important; }
+}

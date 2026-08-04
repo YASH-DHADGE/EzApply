@@ -1,0 +1,45 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf4ff"/>
+      <stop offset="1" stop-color="#cfe9ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer badge -->
+  <circle cx="64" cy="64" r="60" fill="#ffffff" stroke="#f0f1f3" stroke-width="6"/>
+
+  <g transform="rotate(45 64 64)">
+    <!-- left fin -->
+    <path d="M52 62 L34 62 Q28 62 28 68 L28 84 Q28 90 34 88 L52 78 Z" fill="#2c6e91"/>
+    <!-- right fin -->
+    <path d="M76 62 L94 62 Q100 62 100 68 L100 84 Q100 90 94 88 L76 78 Z" fill="#2c6e91"/>
+
+    <!-- rocket body -->
+    <path d="M64 18
+             C82 30 90 52 90 74
+             C90 84 78 92 64 96
+             C50 92 38 84 38 74
+             C38 52 46 30 64 18 Z"
+          fill="url(#body)" stroke="#2f3b7a" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- window -->
+    <circle cx="64" cy="52" r="13" fill="#5cb3ff" stroke="#2f3b7a" stroke-width="4"/>
+
+    <!-- body stripes -->
+    <rect x="58" y="74" width="4" height="12" rx="2" fill="#2f3b7a"/>
+    <rect x="66" y="74" width="4" height="12" rx="2" fill="#2f3b7a"/>
+
+    <!-- flame -->
+    <path d="M64 96
+             C58 104 54 112 60 122
+             C61 116 63 114 64 112
+             C65 114 67 116 68 122
+             C74 112 70 104 64 96 Z"
+          fill="#ff8a5c"/>
+    <path d="M64 104
+             C61 110 60 114 64 120
+             C68 114 67 110 64 104 Z"
+          fill="#ffd97a"/>
+  </g>
+</svg>
