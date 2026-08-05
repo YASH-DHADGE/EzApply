@@ -150,6 +150,13 @@ header {
   color: var(--text-muted);
 }
 
+.download-count {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  min-height: 18px;
+}
+
 .badges {
   display: flex;
   justify-content: center;
