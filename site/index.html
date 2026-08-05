@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EzApply — One-Click Google Form Filler</title>
-<meta name="description" content="A Chrome extension that fills repetitive Google Forms in one click. All data stays on your device.">
+<meta name="description" content="EzApply is a free, open-source Chrome extension that auto-fills repetitive Google Forms — like college placement drives — using details you save once, locally, with no server or account.">
 <link rel="icon" type="image/png" href="icons/icon32.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,9 +17,11 @@
       EzApply
     </div>
     <div>
-      <a class="link" href="#install">Install</a>
       <a class="link" href="#how-it-works">How it works</a>
+      <a class="link" href="#learning">Custom fields</a>
+      <a class="link" href="#faq">FAQ</a>
       <a class="link" href="#privacy">Privacy</a>
+      <a class="link" href="#install">Install</a>
     </div>
   </nav>
 </header>
@@ -31,7 +33,8 @@
     <p class="sub">
       College placement drives ask the same questions over and over — name, mobile number,
       email, roll number, CGPA, skills, links. EzApply stores that once, locally, and fills
-      any Google Form from the toolbar.
+      any Google Form from the toolbar. It gets smarter the more you use it, and it never
+      submits anything on your behalf.
     </p>
     <a class="btn btn-primary" href="ezapply.zip" download>Download EzApply</a>
     <a class="btn btn-secondary" href="#install">Install instructions</a>
@@ -48,6 +51,14 @@
 <section id="how-it-works">
   <div class="wrap">
     <h2>How it works</h2>
+    
+    <div class="mermaid" style="text-align: center; margin-bottom: 32px;">
+      flowchart LR
+        A[Open Google Form] --> B[Click EzApply Icon]
+        B --> C[Review Auto-Filled Details]
+        C --> D[Submit Form]
+    </div>
+
     <div class="features">
       <div class="feature">
         <h3>One-click fill</h3>
@@ -78,6 +89,71 @@
         <tr><td><span class="dot dot-grey"></span>Grey (dashed)</td><td>Skipped; the panel says why</td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<section id="learning">
+  <div class="wrap">
+    <h2>Add your own fields</h2>
+    <p>College forms invent questions the built-in fields can't cover — a LeetCode link, a hostel name, a blood group, a company-specific question. EzApply lets you add these in two ways:</p>
+    
+    <div class="mermaid" style="text-align: center; margin-bottom: 32px;">
+      flowchart LR
+        A[Unrecognized Question] --> B[Skipped in Form]
+        B --> C[Click '+ Add this field']
+        C --> D[Saved for Future Forms]
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <h3>From the form</h3>
+        <p>Find the question in the panel's <em>Skipped</em> list and click <strong>+ Add this field</strong>. The name and type are pulled from the question itself — type your answer once and it fills that question, and every similar one, from then on.</p>
+      </div>
+      <div class="feature">
+        <h3>Ahead of time</h3>
+        <p>Go to the options page → <strong>My Fields</strong> → <strong>+ Add field</strong>, and set it up before you even open a form.</p>
+      </div>
+      <div class="feature">
+        <h3>Learns from corrections</h3>
+        <p>Fix an answer by hand and EzApply reacts: it links the question to an existing field, offers to update that field, or offers to save a brand-new one — whichever fits. Everything learned is listed under <strong>What EzApply has learned</strong>, with a Forget button per row.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="limitations">
+  <div class="wrap">
+    <h2>What it cannot do</h2>
+    <table>
+      <thead>
+        <tr><th>Limitation</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>File uploads</td><td>Google's file question opens a Drive picker no extension can drive — always reported as skipped, so attach the file yourself.</td></tr>
+        <tr><td>Grid questions</td><td>Reported as skipped rather than risk an incorrect fill.</td></tr>
+        <tr><td>Submitting the form</td><td>By design — EzApply only fills, you always click submit.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Does it work on any Google Form?</h3>
+        <p>Yes. EzApply reads a form's questions by their accessibility roles rather than Google's changing class names, so it keeps working even when Google updates the page's internal styling.</p>
+      </div>
+      <div class="feature">
+        <h3>Where is my data stored?</h3>
+        <p>Only in <code>chrome.storage.local</code> on your own machine. Nothing is uploaded, and the codebase makes no network requests at all.</p>
+      </div>
+      <div class="feature">
+        <h3>Can I move my saved details to a new computer?</h3>
+        <p>Yes — use <strong>Backup → Export JSON</strong> on the options page before reinstalling Chrome or switching machines, then import it on the new setup.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -114,6 +190,22 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#f6f7f9',
+      primaryTextColor: '#16181d',
+      primaryBorderColor: '#e4e6eb',
+      lineColor: '#1a56db',
+      secondaryColor: '#ffffff',
+      tertiaryColor: '#f6f7f9',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+    }
+  });
+</script>
 <script src="script.js"></script>
 </body>
 </html>
